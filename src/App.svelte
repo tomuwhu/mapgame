@@ -9,29 +9,40 @@
       text = await text.text()
       let xmlDoc = parser.parseFromString(text,"text/xml")
       let paths = xmlDoc.getElementsByTagName("svg")[0].children
-      for (let i = 1; i < paths.length; i++) {
+      for (let i = 0; i < paths.length; i++) {
          ol[paths[i].getAttribute('title')] = paths[i].getAttribute('d')
       }
    })
 </script>
 
 <main>
+   <svg viewBox="0 0 1009.6727 665.96301">
+      {#each Object.entries(ol) as [t, d]}
+         <path d={d} title={t} 
+            fill = {selc == t ? 'rgb(255,200,230)' : 'gray'}
+            stroke-width = {selc == t ? '0.5' : '0.1'}
+            stroke = {selc == t ? 'red' : 'gray'}
+         ></path>
+      {/each}
+   </svg>
    <select bind:value={selc}>
       {#each Object.entries(ol) as [t, d]}
       <option value={t} >{t}</option>
       {/each}
    </select>
-   <br>
-   <hr>
-   <svg viewBox="0 0 1009.6727 665.96301">
-      {#each Object.entries(ol) as [t, d]}
-         <path d={d} title={t} fill={selc == t ? 'rgb(255,200,230)' : 'gray'}></path>
-      {/each}
-   </svg>
 </main>
 
 <style>
-  svg {
-    width: 1000%;
-  }
+   select {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 20px;
+      position: fixed;
+      top: 110px;
+   }
+   svg {
+         width: 100%;
+         position: absolute;
+         left: 0px;
+         top: 100px;
+   }
 </style>
