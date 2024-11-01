@@ -19,9 +19,9 @@
    <svg viewBox="0 0 1009.6727 665.96301">
       {#each Object.entries(ol) as [t, d]}
          <path d={d} title={t} 
-            fill = {selc == t ? 'rgb(255,200,230)' : 'gray'}
-            stroke-width = {selc == t ? '0.5' : '0.1'}
-            stroke = {selc == t ? 'red' : 'gray'}
+            fill = {selc == t ? 'rgb(200,255,245)' : 'rgb(60,60,60)'}
+            stroke-width = {selc == t ? '0.5' : '0.02'}
+            stroke = {selc == t ? 'rgb(255,200,230)' : 'black'}
          ></path>
       {/each}
    </svg>
