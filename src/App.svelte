@@ -26,7 +26,7 @@
       {/each}
    </svg>
    <select bind:value={selc}>
-      {#each Object.entries(ol) as [t, d]}
+      {#each Object.entries(ol).sort() as [t, d]}
       <option value={t} >{t}</option>
       {/each}
    </select>
